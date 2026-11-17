@@ -5,6 +5,15 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#09090d">
 <title>Night Cards</title>
+<script>
+history.scrollRestoration = 'manual';
+if (location.hash) {
+  history.replaceState(history.state, '', location.pathname + location.search);
+}
+window.addEventListener('pageshow', () => {
+  window.scrollTo({top: 0, left: 0, behavior: 'instant'});
+});
+</script>
 <link rel="stylesheet" href="summer-art.css">
 <link rel="stylesheet" href="night.css?v=5">
 </head>
