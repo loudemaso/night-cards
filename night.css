@@ -1,0 +1,101 @@
+:root {
+  color-scheme: dark;
+  --bg: #09090d;
+  --line: #ffffff24;
+  --violet: #bba4ff;
+  --muted: #b8b6c4;
+  font: 16px/1.45 "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: var(--bg);
+  color: #f6f5fb;
+  scroll-behavior: smooth;
+}
+* { box-sizing: border-box }
+body, h1, h2, p { margin: 0 }
+a { color: inherit; text-decoration: none }
+button, input, select { font: inherit; color: inherit }
+button { cursor: pointer }
+:focus-visible { outline: 3px solid var(--violet); outline-offset: 5px }
+header {
+  position: relative; z-index: 1; display: flex; align-items: center; gap: 30px;
+  height: 72px; padding-inline: max(5vw, calc((100vw - 1200px)/2));
+  border-bottom: 1px solid var(--line); background: #0b0b10;
+}
+.brand { display: inline-flex; align-items: center; gap: 12px; white-space: nowrap; font-size: 22px; font-weight: 760; letter-spacing: -.065em }
+.brand i { width: 23px; height: 28px; position: relative; margin-left: 3px }
+.brand i::before, .brand i::after { content: ''; position: absolute; inset: 3px 2px; border: 1.6px solid #e9e3ff; border-radius: 4px; transform: rotate(-19deg) translateX(-3px) }
+.brand i::after { content: '♦'; color: var(--violet); background: #17151c; text-align: center; font: 15px/20px Georgia,serif; transform: rotate(7deg) translateX(2px) }
+nav { display: flex; gap: 24px; margin-left: auto }
+nav a { color: var(--muted); font-size: 13px; font-weight: 560; padding-block: 12px }
+nav a:hover { color: white }
+button { border: 1px solid var(--line); background: #25242d; border-radius: 12px; padding: 11px 15px }
+button:hover { background: #34323d }
+.profile-button { display: grid; place-items: center; width: 40px; height: 40px; padding: 0; border-radius: 50% }
+.profile-button svg { width: 18px }
+.daily-drop {
+  position: relative; isolation: isolate; overflow: hidden; display: grid; justify-items: center; align-content: center;
+  min-height: clamp(600px, 80svh, 860px); padding: 42px 18px; gap: 22px; text-align: center;
+  background: radial-gradient(ellipse at 50% 62%, #322351 0%, #191522 32%, #0d0c13 66%, var(--bg) 96%);
+}
+.stage { position: absolute; inset: 0; z-index: -1; overflow: hidden; pointer-events: none }
+.stage::before, .stage::after, .stage i {
+  content: ''; position: absolute; top: 58%; left: 50%; width: max(78%, 650px); height: 28%;
+  border: 1px solid #ac94fc30; border-radius: 50%; transform: translate(-50%, -50%) rotate(-14deg);
+  box-shadow: inset 0 1px 2px #bbacff12;
+}
+.stage::after { width: max(93%, 780px); height: 34%; border-color: #ac94fc16 }
+.stage i { width: max(108%, 910px); height: 40%; border-color: #ac94fc0e }
+h1, h2 { font-weight: 670; line-height: 1; letter-spacing: -.072em }
+h1 { font-size: clamp(55px, 6.7vw, 94px) }
+h1 span { color: var(--violet) }
+.claim-card, .tile { display: block; border: 0; padding: 0; background: transparent; border-radius: 17px; min-width: 0 }
+.claim-card:hover, .tile:hover { background: transparent }
+.claim-card { width: clamp(180px, 30svh, 314px); margin-block: 6px; animation: arrive .8s ease-out both }
+.playing-card {
+  position: relative; display: flex; flex-direction: column; width: 100%; aspect-ratio: 2/3; overflow: hidden;
+  border: 1px solid #d4c6fd69; border-radius: 16px; background: linear-gradient(150deg,#373241,#17151e 42%,#201e28);
+  box-shadow: 0 18px 36px #0006, inset 0 0 0 3px #ffffff08; transition: transform .35s, box-shadow .35s;
+}
+.claim-card .playing-card { transform: rotate(-5deg); box-shadow: 2px 3px 0 #544764, 0 20px 36px #0009, 0 0 55px #a985ff30 }
+.featured-art { width: 100%; height: 100%; object-fit: cover }
+.claim-hint { display: flex; align-items: center; gap: 8px; color: #ded9ec; font-size: 13px }
+.claim-hint span { font-size: 21px; color: var(--violet) }
+#collection { max-width: 1280px; margin: auto; padding: clamp(44px,6vw,84px) 5% 90px; border-top: 1px solid var(--line) }
+.collection-heading, .line { display: flex; align-items: center; justify-content: space-between; gap: 16px }
+.collection-heading { margin-bottom: 36px }
+.collection-heading h2 { font-size: clamp(38px,5vw,68px) }
+.collection-heading > span, .card-meta time, .card-meta > span, small { font: 11px/1.5 ui-monospace,monospace; color: var(--muted); letter-spacing: .07em; text-transform: uppercase }
+.grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: clamp(32px,5vw,70px) }
+.card-corner { display: flex; align-items: center; justify-content: space-between; padding: 3% 6%; color: #d7c9ff; font: 12px/1.3 ui-monospace,monospace; letter-spacing: .08em }
+.card-corner span:first-child { font-size: 17px }
+.card-bottom { margin-top: auto; transform: rotate(180deg) }
+.summer-art { aspect-ratio: 1; background-image: var(--summer-sheet); background-size: 500% 200%; margin: 0 4%; border-radius: 7px }
+.card-meta { text-align: center; padding: 3% 4% 0; font-size: clamp(17px,2vw,26px); line-height: 1.15; letter-spacing: -.045em; font-weight: 650 }
+.card-meta time, .card-meta > span { display: block; margin-top: 4px; font-size: 10px }
+.image-meta { position: absolute; inset: auto 0 0; padding: 12% 4% 6%; background: linear-gradient(transparent,#100d18 50%) }
+.poster { display: grid; flex: 1; place-items: center; background: var(--ink); font: 5rem Georgia,serif }
+dialog { width: min(440px,93vw); max-height: 90svh; padding: 24px; color: inherit; background: #17161e; border: 1px solid #ffffff30; border-radius: 22px; box-shadow: 0 28px 90px #000a }
+dialog::backdrop { background: #050509bf; backdrop-filter: blur(10px) }
+dialog h2 { font-size: 26px; line-height: 1.14; letter-spacing: -.045em }
+.line > button { border-radius: 50%; padding: 0; width: 36px; height: 36px; flex: none; font-size: 22px }
+dialog p { color: var(--muted); margin-block: 18px }
+dialog .playing-card { max-width: 220px; margin: 24px auto }
+.panel { border-top: 1px solid var(--line); margin-top: 24px; padding-top: 20px }
+.actions { display: flex; flex-wrap: wrap; gap: 8px }
+output { display: block; margin-top: 10px; color: var(--violet) }
+label { display: grid; gap: 6px; margin-block: 15px }
+input, select { width: 100%; background: #0c0b10; border: 1px solid #ffffff38; border-radius: 10px; padding: 12px }
+.primary { background: #d9ceff; color: #1c1528; font-weight: 680 }
+.primary:hover { background: #eee7ff }
+@keyframes arrive { from { opacity: 0; transform: translateY(12px) rotate(3deg) } to { opacity: 1; transform: none } }
+@media (hover:hover) { .tile:hover .playing-card { transform: translateY(-5px) } .claim-card:hover .playing-card { transform: translateY(-4px) rotate(-2deg) } }
+@media (max-width:680px) {
+  header { height: 62px; gap: 16px }
+  .brand { font-size: 20px }
+  nav { gap: 12px }
+  nav a:first-child { display: none }
+  .daily-drop { min-height: clamp(510px,77svh,760px); gap: 23px }
+  .claim-card { width: min(55vw,32svh,265px) }
+  .grid { grid-template-columns: minmax(0,1fr); max-width: 350px; margin: auto; gap: 42px }
+  .card-meta { font-size: 23px }
+}
+@media (prefers-reduced-motion:reduce) { :root { scroll-behavior: auto } .claim-card { animation: none } .playing-card { transition: none } }
