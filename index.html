@@ -26,16 +26,13 @@ const summerNights = [
 ];
 const summerStart = cards.length;
 summerNights.forEach(([name, day, story], portrait) => cards.push({name, day, story, portrait}));
-const summerPreview = new URLSearchParams(location.search).get('collection') === 'summer-2026';
-if (summerPreview) {
-  if (!state.summer2026) {
+if (!state.summer2026) {
     state.cards.push(...summerNights.map((_, i) => summerStart + i).reverse());
     state.summer2026 = true;
     if (!state.alias) state.alias = 'Lou';
     save();
-  }
-  page = 'Collection';
 }
+page = 'Collection';
 function portraitMarkup(card) {
   const x = (card.portrait % 5) * 25;
   const y = Math.floor(card.portrait / 5) * 100;
