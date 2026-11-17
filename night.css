@@ -30,7 +30,7 @@ nav a { color: var(--muted); font-size: 13px; font-weight: 560; padding-block: 1
 nav a:hover { color: white }
 button { border: 1px solid var(--line); background: #25242d; border-radius: 12px; padding: 11px 15px }
 button:hover { background: #34323d }
-.profile-button { display: grid; place-items: center; width: 40px; height: 40px; padding: 0; border-radius: 50% }
+.profile-button { margin-left: auto; display: grid; place-items: center; width: 40px; height: 40px; padding: 0; border-radius: 50% }
 .profile-button svg { width: 18px }
 .daily-drop {
   position: relative; isolation: isolate; overflow: hidden; display: grid; justify-items: center; align-content: center;
