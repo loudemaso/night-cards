@@ -53,15 +53,22 @@ h1, h2 { font-weight: 670; line-height: 1; letter-spacing: -.072em }
   letter-spacing: -.065em;
 }
 #drop-title {
-  position: absolute; left: var(--section-inset); top: 50%;
-  transform: translateY(-50%); text-align: left;
+  position: absolute; right: calc(100% - 30px); top: 24%;
+  z-index: 0; text-align: left; pointer-events: none;
+}
+.drop-display { position: relative; width: clamp(180px, 30svh, 314px); isolation: isolate }
+.drop-display::after {
+  content: ''; position: absolute; z-index: -1; left: -25%; right: -25%; bottom: -24px;
+  height: 50px; border-radius: 50%;
+  background: radial-gradient(ellipse, #b18be52b, #b18be500 70%);
+  pointer-events: none;
 }
 @media (min-width:681px) {
   .daily-drop { padding-left: clamp(145px, 24vw, 420px) }
 }
 .claim-card, .tile { display: block; border: 0; padding: 0; background: transparent; border-radius: 17px; min-width: 0 }
 .claim-card:hover, .tile:hover { background: transparent }
-.claim-card { width: clamp(180px, 30svh, 314px); margin-block: 6px; animation: arrive .8s ease-out both }
+.claim-card { position: relative; z-index: 1; width: 100%; margin-block: 6px; animation: arrive .8s ease-out both }
 .playing-card {
   position: relative; display: flex; flex-direction: column; width: 100%; aspect-ratio: 2/3; overflow: hidden;
   border: 1px solid #d4c6fd69; border-radius: 16px; background: linear-gradient(150deg,#373241,#17151e 42%,#201e28);
@@ -71,10 +78,14 @@ h1, h2 { font-weight: 670; line-height: 1; letter-spacing: -.072em }
 .featured-art { width: 100%; height: 100%; object-fit: cover }
 .claim-hint { display: flex; align-items: center; gap: 8px; color: #ded9ec; font-size: 13px }
 .claim-hint span { font-size: 21px; color: var(--violet) }
-#collection { padding: clamp(44px,6vw,84px) var(--section-inset) 90px; border-top: 1px solid var(--line) }
+#collection { padding: 0 var(--section-inset) 90px; position: relative; }
 .collection-heading, .line { display: flex; align-items: center; justify-content: space-between; gap: 16px }
-.collection-heading { flex-direction: row-reverse; align-items: baseline; margin-bottom: clamp(32px,4vw,60px) }
-#collection-title { text-align: right }
+.collection-heading { position: relative; isolation: isolate; flex-direction: row-reverse; align-items: baseline; margin-bottom: clamp(32px,4vw,60px) }
+.collection-heading::before {
+  content: ''; position: absolute; z-index: -1; left: calc(-1 * var(--section-inset)); right: calc(-1 * var(--section-inset));
+  top: .6em; font-size: clamp(48px,12vw,160px); height: 1px; background: var(--line);
+}
+#collection-title { text-align: right; background: var(--bg); padding-left: .18em; }
 .collection-heading > span, .card-meta time, .card-meta > span, small { font: 11px/1.5 ui-monospace,monospace; color: var(--muted); letter-spacing: .07em; text-transform: uppercase }
 .grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: clamp(32px,5vw,70px) }
 .card-corner { display: flex; align-items: center; justify-content: space-between; padding: 3% 6%; color: #d7c9ff; font: 12px/1.3 ui-monospace,monospace; letter-spacing: .08em }
@@ -106,10 +117,11 @@ input, select { width: 100%; background: #0c0b10; border: 1px solid #ffffff38; b
   nav { gap: 12px }
   nav a:first-child { display: none }
   .section-title { font-size: clamp(48px,17vw,96px) }
-  #drop-title { position: static; transform: none; justify-self: start }
+  #drop-title { right: auto; left: -14vw; top: -.5em; }
+  .drop-display { width: min(55vw,32svh,265px); margin-top: 45px; }
+  .collection-heading::before { font-size: clamp(48px,17vw,96px) }
   .collection-heading { flex-direction: column; align-items: flex-end; gap: 10px }
   .daily-drop { min-height: clamp(510px,77svh,760px); gap: 30px; padding-inline: var(--section-inset) }
-  .claim-card { width: min(55vw,32svh,265px) }
   .grid { grid-template-columns: minmax(0,1fr); max-width: 350px; margin: auto; gap: 42px }
   .card-meta { font-size: 23px }
 }
