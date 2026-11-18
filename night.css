@@ -53,8 +53,13 @@ h1, h2 { font-weight: 670; line-height: 1; letter-spacing: -.072em }
   letter-spacing: -.065em;
 }
 #drop-title {
-  position: absolute; right: calc(100% - 30px); top: 24%;
-  z-index: 0; text-align: left; pointer-events: none;
+  position: absolute; right: calc(100% + 38px); top: 24%;
+  z-index: 0; isolation: isolate; text-align: left; pointer-events: none;
+  text-shadow: 3px 7px 14px #00000066;
+}
+#drop-title::before {
+  content: ''; position: absolute; z-index: -1; inset: -65% -30%;
+  background: radial-gradient(ellipse, #b08aff1c, #b08aff00 68%);
 }
 .drop-display { position: relative; width: clamp(180px, 30svh, 314px); isolation: isolate }
 .drop-display::after {
@@ -117,8 +122,8 @@ input, select { width: 100%; background: #0c0b10; border: 1px solid #ffffff38; b
   nav { gap: 12px }
   nav a:first-child { display: none }
   .section-title { font-size: clamp(48px,17vw,96px) }
-  #drop-title { right: auto; left: -14vw; top: -.5em; }
-  .drop-display { width: min(55vw,32svh,265px); margin-top: 45px; }
+  #drop-title { right: auto; left: -14vw; top: -1.45em; }
+  .drop-display { width: min(55vw,32svh,265px); margin-top: 95px; }
   .collection-heading::before { font-size: clamp(48px,17vw,96px) }
   .collection-heading { flex-direction: column; align-items: flex-end; gap: 10px }
   .daily-drop { min-height: clamp(510px,77svh,760px); gap: 30px; padding-inline: var(--section-inset) }
